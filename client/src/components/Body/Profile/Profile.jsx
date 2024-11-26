@@ -14,7 +14,7 @@ const Profile = () => {
           now
         </span>
       </div>
-      <div className="flex flex-col mt-2 w-full ms-12">
+      <div className="flex flex-col mt-2 text-left">
           <div className="space-y-4">
             {/* First Name */}
             <div className="flex flex-col">

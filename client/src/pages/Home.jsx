@@ -3,26 +3,34 @@ import Header from "../components/header/Header";
 import Users from "../components/Body/Users/Users";
 import Messages from "../components/Body/Messages/Messages";
 import Profile from "../components/Body/Profile/Profile";
+import NoChatSelected from "../components/Body/NoChatSelected";
 
 const Home = () => {
   return (
     <div
-      className="border rounded size-5/6 flex flex-col"
+      className="border rounded grid grid-rows-12 h-full w-full "
       style={{ backgroundColor: "#F9F7F7" }}
     >
-      <div className="header-information px-4 border-b">
+      <div className="border-b">
+      <div className="header row-span-1 mx-5">
         <Header />
       </div>
-      <div className="body h-full grid grid-cols-12 ms-1 ps-2">
+      </div>
+      <div className="body row-span-11 mx-5">
+        <div className="grid grid-cols-12 h-full">
           <div className="col-span-3 border-r">
             <Users />
           </div>
-          <div className="col-span-7 border-r ">
+          {/* <div className="lg:col-span-7 col-span-9">
             <Messages />
           </div>
-          <div className="col-span-2 ">
+          <div className="col-span-2 hidden lg:block border-l">
             <Profile />
+          </div> */}
+          <div className="col-span-9">
+            <NoChatSelected />
           </div>
+        </div>
       </div>
     </div>
   );

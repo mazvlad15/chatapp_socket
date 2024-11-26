@@ -5,9 +5,10 @@ import ScrollToBottom from "react-scroll-to-bottom";
 
 const Messages = () => {
   return (
-    <ScrollToBottom >
-      <div className="flex flex-col h-full">
-        <div className="messages overflow-auto m-2 p-2 max-h-[430px]">
+    <div className="h-full grid grid-rows-subgrid relative">
+      
+        <div className="messages overflow-auto row-span-12 p-5 mb-5 space-y-3">
+          {/* Lista mesajelor */}
           <Message />
           <Message />
           <Message />
@@ -17,12 +18,17 @@ const Messages = () => {
           <Message />
           <Message />
           <Message />
+          <Message />
+          <Message />
+          <Message />
+
+          
         </div>
-        <div className="mt-auto mb-3 border-t">
-          <WriteMessage />
-        </div>
+      {/* WriteMessage fixat jos */}
+      <div className=" absolute bottom-0 w-full p-2 bg-[#F9F7F7]">
+        <WriteMessage />
       </div>
-    </ScrollToBottom>
+    </div>
   );
 };
 

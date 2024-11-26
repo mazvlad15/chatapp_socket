@@ -4,7 +4,7 @@ const Message = () => {
   return (
     <div>
       <div className="chat chat-start mb-4">
-        <div className="chat-image avatar">
+        <div className="chat-image avatar hidden lg:block">
           <div className="w-10 rounded-full">
             <img
               alt="Tailwind CSS chat bubble component"
@@ -12,7 +12,7 @@ const Message = () => {
             />
           </div>
         </div>
-        <div className="chat-bubble">You were the Chosen One!</div>
+        <div className="chat-bubble ">You were the Chosen One  were the Chosen were the Chosen!</div>
         <time className="chat-footer opacity-50 tex-xs">12:45</time>
       </div>
     </div>
