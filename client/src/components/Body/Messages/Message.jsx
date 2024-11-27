@@ -10,11 +10,11 @@ const Message = ({message}) => {
   const fromMe = message.senderId === authState._id;
   const chatClassName = fromMe ? 'chat-end' : 'chat-start';
   const profilePic = fromMe ? authState.profilePic : selectedConversation.profilePic;
-  const bubbleBgColor = fromMe ? 'bg-[3F72AF]' : "";
+  const bubbleBgColor = fromMe ? 'bg-[#3F72AF]' : "";
   const sendTime = `${new Date(message.createdAt).getHours()}:${new Date(message.createdAt).getMinutes().toString().padStart(2, '0')}`;
 
   return (
-    <div>
+    <div className="">
       <div className={`chat ${chatClassName}`}>
         <div className="chat-image avatar hidden lg:block">
           <div className="w-10 rounded-full">

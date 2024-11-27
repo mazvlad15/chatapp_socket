@@ -4,11 +4,14 @@ import User from "./User";
 import useGetAllUsers from "../../../hooks/useGetAllUsers";
 import CircularProgress from "@mui/material/CircularProgress";
 import useGetLastMessage from "../../../hooks/useGetLastMessage";
+import useListenMessages from "../../../hooks/useListenMessage";
 
 const Users = () => {
   const { loadingUsers, users, error } = useGetAllUsers();
   const [searchTerm, setSearchTerm] = useState("");
   const { loading, lastMessages } = useGetLastMessage();
+  
+  useListenMessages()
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value.toLowerCase());
@@ -24,17 +27,17 @@ const Users = () => {
     );
 
     if (lastMessage && lastMessage.messages.length > 0) {
-      const lastMessageDetails = lastMessage.messages[lastMessage.messages.length - 1]; 
+      const lastMessageDetails =
+        lastMessage.messages[lastMessage.messages.length - 1];
       const message = lastMessageDetails.message;
       const createdAt = lastMessageDetails.createdAt;
 
-      
       return {
         message,
         createdAt,
       };
     } else {
-      return null; 
+      return null;
     }
   };
 
@@ -47,7 +50,7 @@ const Users = () => {
         {loadingUsers && <CircularProgress />}
         {filteredUsers.map((user) => {
           const lastMessage = getLastMessageForUser(user._id);
-          return <User key={user._id} user={user} lastMessage={lastMessage}/>;
+          return <User key={user._id} user={user} lastMessage={lastMessage} />;
         })}
         {!loadingUsers && filteredUsers.length === 0 && (
           <p className="text-center text-gray-500">No users found.</p>

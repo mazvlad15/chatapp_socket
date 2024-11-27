@@ -4,13 +4,15 @@ import WriteMessage from "./WriteMessage";
 import ScrollToBottom from "react-scroll-to-bottom";
 import useGetMessages from "../../../hooks/useGetMessages";
 import MessageSkeleton from "../../skeletons/MessageSkeleton";
+import useListenMessages from "../../../hooks/useListenMessage";
 
 const Messages = () => {
   const { loading, errorM, messages } = useGetMessages();
+  useListenMessages();
 
   return (
     <div className="h-full grid grid-rows-subgrid relative">
-      <ScrollToBottom className={`messages overflow-auto row-span-12 p-5 `}>
+      <ScrollToBottom className={`messages overflow-auto row-span-12 p-5 mb-10`}>
         {!loading && !errorM && messages.length > 0 && messages.map((message) => (
           <Message key={message._id} message={message} />
         ))}
@@ -26,7 +28,7 @@ const Messages = () => {
           </div>
         )}
       </ScrollToBottom>
-      <div className="absolute bottom-0 w-full p-2 bg-[#F9F7F7]">
+      <div className="absolute bottom-0 w-full p-2 bg-[#F9F7F7] ">
         <WriteMessage />
       </div>
     </div>

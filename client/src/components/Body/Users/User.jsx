@@ -1,10 +1,12 @@
 import React from "react";
 import useConversation from "../../../zustand/useConversation";
-import { useAuthContext } from "../../../context/AuthContect";
+import { useSocketContext } from "../../../context/SocketContext";
 
 const User = ({ user, lastMessage }) => {
   const { selectedConversation, setSelectedConversation} = useConversation();
   const isSelected = selectedConversation?._id === user._id;
+  const { onlineUsers } = useSocketContext();
+  const isOnline = onlineUsers.includes(user._id);
 
   const sendTime = lastMessage && lastMessage.createdAt
     ? `${new Date(lastMessage.createdAt).getHours()}:${new Date(lastMessage.createdAt).getMinutes().toString().padStart(2, '0')}`
@@ -17,7 +19,7 @@ const User = ({ user, lastMessage }) => {
       }`}
       onClick={() => setSelectedConversation(user)}
     >
-      <div className="avatar online flex">
+      <div className={`avatar ${isOnline ? "online" : "offline"} flex`}>
         <div className="w-14 rounded-full ">
           <img src={user.profilePic} />
         </div>
