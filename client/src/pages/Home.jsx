@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Header from "../components/header/Header";
+import Header from "../components/Header/Header";
 import Users from "../components/Body/Users/Users";
 import Messages from "../components/Body/Messages/Messages";
 import Profile from "../components/Body/Profile/Profile";
