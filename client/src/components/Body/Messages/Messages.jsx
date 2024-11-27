@@ -8,7 +8,6 @@ import useListenMessages from "../../../hooks/useListenMessage";
 
 const Messages = () => {
   const { loading, errorM, messages } = useGetMessages();
-  useListenMessages();
 
   return (
     <div className="h-full grid grid-rows-subgrid relative">

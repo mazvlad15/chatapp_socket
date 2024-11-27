@@ -5,6 +5,7 @@ const Profile = () => {
 
   const { selectedConversation, setSelectedConversation } = useConversation();
 
+
   return (
     <div className="flex flex-col items-center justify-between">
       <div className="mt-5 p-2 flex items-center flex-col">
@@ -13,10 +14,10 @@ const Profile = () => {
           src={selectedConversation && selectedConversation.profilePic}
         />
         <h3 className="mt-2 text-lg font-semibold uppercase">{selectedConversation && selectedConversation.fullName}</h3>
-        <span className="flex items-center opacity-75">
+        {/* <span className="flex items-center opacity-75">
           <div className="bg-green-600 w-2 h-2 rounded-full me-1"></div>Active
           now
-        </span>
+        </span> */}
       </div>
       <div className="flex flex-col mt-2 text-left">
           <div className="space-y-4">
