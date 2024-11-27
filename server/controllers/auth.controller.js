@@ -16,7 +16,9 @@ export const signup = async (req, res) => {
       return res.status(400).json({ error: "User already exists" });
     }
 
-    const userDefaultPicture = `https://avatar.iran.liara.run/username?username=${fullName}`;
+    const [firstName, lastName] = fullName.split(" ");
+
+    const userDefaultPicture = `https://avatar.iran.liara.run/username?username=${firstName} + ${lastName}`;
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);

@@ -1,4 +1,5 @@
 import React from "react";
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
 const NoChatSelected = ({ userName }) => {
   return (
@@ -10,7 +11,8 @@ const NoChatSelected = ({ userName }) => {
             👋
           </span>
           <br />
-          Select the chat and communicate with anyone.
+          Select the chat and communicate with anyone. 
+          <ChatBubbleOutlineIcon />
         </h1>
       </div>
     </div>
