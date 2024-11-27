@@ -44,7 +44,7 @@ export const getMessage = async (req, res) => {
         const senderId = req.user._id;
 
         const conversation = await Conversation.findOne({
-            participants: [senderId, receiverId],
+            participants: { $all: [senderId, receiverId] },
         }).populate("messages")
 
         if(!conversation) return res.status(200).json([]);
@@ -54,6 +54,25 @@ export const getMessage = async (req, res) => {
         res.status(200).json(messages);
 
     } catch (error) {
+      console.log(error)
         res.status(500).json({ error: "Internal Server error (getMessage)" });
     }
 }
+
+export const getAllConversationsWithMessages = async (req, res) => {
+  try {
+    const senderId = req.user._id;
+
+    const conversations = await Conversation.find({
+      participants: senderId,
+    }).populate("messages");
+
+    if (!conversations || conversations.length === 0) {
+      return res.status(200).json([]);
+    }
+
+    res.status(200).json(conversations);
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server error (getAllConversationsWithMessages)" });
+  }
+};

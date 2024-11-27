@@ -15,7 +15,7 @@ const Message = ({message}) => {
 
   return (
     <div>
-      <div className={`chat ${chatClassName} mb-4`}>
+      <div className={`chat ${chatClassName}`}>
         <div className="chat-image avatar hidden lg:block">
           <div className="w-10 rounded-full">
             <img

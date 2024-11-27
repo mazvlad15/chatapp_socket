@@ -10,6 +10,7 @@ const useGetMessages = () => {
   useEffect(() => {
     const getAllMessages = async () => {
       setLoading(true);
+      console.log(selectedConversation._id);
       try {
         const response = await axios.get(
           `/api/messages/${selectedConversation._id}`

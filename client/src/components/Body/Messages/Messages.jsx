@@ -10,7 +10,7 @@ const Messages = () => {
 
   return (
     <div className="h-full grid grid-rows-subgrid relative">
-      <ScrollToBottom className={`messages overflow-auto row-span-12 p-5 mb-5 space-y-3`}>
+      <ScrollToBottom className={`messages overflow-auto row-span-12 p-5 `}>
         {!loading && !errorM && messages.length > 0 && messages.map((message) => (
           <Message key={message._id} message={message} />
         ))}

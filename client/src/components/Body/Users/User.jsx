@@ -2,13 +2,13 @@ import React from "react";
 import useConversation from "../../../zustand/useConversation";
 import { useAuthContext } from "../../../context/AuthContect";
 
-const User = ({ user }) => {
-  const { selectedConversation, setSelectedConversation, messages} = useConversation();
-  const { authState } = useAuthContext();
-  const isMe = authState._id === user._id;
+const User = ({ user, lastMessage }) => {
+  const { selectedConversation, setSelectedConversation} = useConversation();
   const isSelected = selectedConversation?._id === user._id;
-  const lastMessage = messages[messages.length-1];
 
+  const sendTime = lastMessage && lastMessage.createdAt
+    ? `${new Date(lastMessage.createdAt).getHours()}:${new Date(lastMessage.createdAt).getMinutes().toString().padStart(2, '0')}`
+    : null; 
 
   return (
     <div
@@ -19,15 +19,15 @@ const User = ({ user }) => {
     >
       <div className="avatar online flex">
         <div className="w-14 rounded-full ">
-          <img src={isMe ? "saved_message_icon.png" : user.profilePic} />
+          <img src={user.profilePic} />
         </div>
       </div>
       <div className="ms-2 hidden md:block">
-        <h3 className="font-bold">{ isMe ? "Saved Messages" : user.fullName}</h3>
-        <p className="hidden lg:block">{lastMessage?.message || ""}</p>
+        <h3 className="font-bold">{user.fullName}</h3>
+        <p className="hidden lg:block">{lastMessage?.message}</p>
       </div>
       <div className="ms-auto hidden lg:block">
-        <p className="text-xs">18:40</p>
+        {sendTime && <p className="text-xs">{sendTime}</p>}
       </div>
     </div>
   );
